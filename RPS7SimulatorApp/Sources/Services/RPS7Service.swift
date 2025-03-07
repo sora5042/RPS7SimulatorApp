@@ -10,7 +10,7 @@ import Foundation
 
 struct RPS7Service {
     var rps7API = RPS7API(apiClient: .default)
-    
+
     func computerHand() async throws -> RPS7 {
         let response = try await rps7API.get()
         return .init(rps7: response)

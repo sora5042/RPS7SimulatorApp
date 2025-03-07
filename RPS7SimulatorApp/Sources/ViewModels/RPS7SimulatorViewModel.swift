@@ -9,10 +9,13 @@ import Foundation
 
 @MainActor
 final class RPS7SimulatorViewModel: ObservableObject {
-    let rps7Service: RPS7Service
+    private let rps7Service: RPS7Service
 
     @Published
-    var computerHand: Hand?
+    private(set) var computerHand: Hand?
+
+    @Published
+    private(set) var playerHand: Hand?
 
     @Published
     var resultText: String?
@@ -22,8 +25,10 @@ final class RPS7SimulatorViewModel: ObservableObject {
     ) {
         self.rps7Service = rps7Service
     }
-    
+
     func playRPS7(playerHand: Hand) async {
+        self.playerHand = playerHand
+
         do {
             let rps7 = try await rps7Service.computerHand()
             computerHand = .init(hand: rps7.hand)
@@ -33,10 +38,10 @@ final class RPS7SimulatorViewModel: ObservableObject {
         }
     }
 
-    func determineWinner(playerHand: Hand, computerHand: Hand?) {
+    private func determineWinner(playerHand: Hand, computerHand: Hand?) {
         guard let computerHand = computerHand else { return }
         if playerHand == computerHand {
-            resultText = "引き分け！"
+            resultText = "あいこ！"
             return
         }
 
@@ -49,7 +54,7 @@ final class RPS7SimulatorViewModel: ObservableObject {
             .scissors: [.sponge, .paper, .air],
             .fire: [.scissors, .sponge, .paper]
         ]
-        
+
         if winningCombinations[playerHand]?.contains(computerHand) ?? false {
             resultText = "あなたの勝ち！"
         } else {
@@ -59,11 +64,11 @@ final class RPS7SimulatorViewModel: ObservableObject {
 }
 
 extension RPS7SimulatorViewModel {
-    enum Hand: String, Hashable {
+    enum Hand: String, Hashable, CaseIterable {
         case rock = "グー"
         case scissors = "チョキ"
         case paper = "パー"
-        case water = "ウオーター"
+        case water = "ウォーター"
         case air = "エア"
         case sponge = "スポンジ"
         case fire = "ファイヤー"
