@@ -16,7 +16,7 @@ struct RPS7APIClient: APIClient {
     }
 
     var baseURL: String {
-        "http://52.195.82.85:5000/"
+        "https://mobileappexam.kaihatsu-demo.com/"
     }
 
     let session: URLSessionProtocol

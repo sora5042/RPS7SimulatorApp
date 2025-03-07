@@ -13,7 +13,7 @@ public struct RPS7API: APIEndpoint {
     }
 
     public let apiClient: APIClient
-    public let path = "janken"
+    public let path = "v1/junken"
 
     public func get() async throws -> RPS7 {
         try await apiClient.response(path: path)
