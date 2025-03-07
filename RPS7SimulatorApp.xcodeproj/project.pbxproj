@@ -80,11 +80,21 @@
 			);
 			target = 47B8ADF82D75B1B400EB1590 /* API */;
 		};
+		47B8AE8E2D78119400EB1590 /* Exceptions for "RPS7SimulatorApp" folder in "RPS7SimulatorApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 47B8AD382D75AE6100EB1590 /* RPS7SimulatorApp */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		47B8AD3B2D75AE6100EB1590 /* RPS7SimulatorApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				47B8AE8E2D78119400EB1590 /* Exceptions for "RPS7SimulatorApp" folder in "RPS7SimulatorApp" target */,
+			);
 			path = RPS7SimulatorApp;
 			sourceTree = "<group>";
 		};

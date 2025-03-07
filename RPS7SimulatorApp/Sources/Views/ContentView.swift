@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject
+    var viewModel: RPS7SimulatorViewModel = .init()
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
